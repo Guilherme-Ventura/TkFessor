@@ -1,0 +1,15 @@
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\bin\Debug\TkFessor.exe.config
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\bin\Debug\TkFessor.exe
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\bin\Debug\TkFessor.pdb
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor.csproj.AssemblyReference.cache
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\MainWindow.g.cs
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\App.g.cs
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor_MarkupCompile.cache
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor_MarkupCompile.lref
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\MainWindow.baml
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor.g.resources
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor.Properties.Resources.resources
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor.csproj.GenerateResource.cache
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor.csproj.CoreCompileInputs.cache
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor.exe
+C:\Users\Guilherme\Desktop\TkFessor\TkFessor\obj\Debug\TkFessor.pdb
