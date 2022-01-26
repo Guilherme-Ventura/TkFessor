@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TkFessor"
         mc:Ignorable="d"
-        Title="TkFessor" Height="720" Width="1300" ResizeMode="NoResize">
+        Title="TkFessor" Height="720" Width="1300" ResizeMode="NoResize" BorderThickness="0">
     <Grid>
         <Rectangle Height="693" Margin="-1,-2,0,0" Stroke="Black" VerticalAlignment="Top" Opacity="0.7" Fill="Black"/>
         <Image x:Name="ImagemFundo" HorizontalAlignment="Left" Height="771" Margin="-13,-29,-328,-51" VerticalAlignment="Top" Width="1635" Source="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Volibear_0.jpg" RenderTransformOrigin="0.5,0.5" Opacity="0.4"/>
@@ -16,14 +16,14 @@
                     <SolidColorBrush Color="Bisque" Opacity="0.1"/>
                 </StackPanel.Background>
                 <StackPanel x:Name="LocalEloSolo" Width="190">
-                    <TextBlock TextWrapping="Wrap" Text="Solo/Duo" HorizontalAlignment="Center" Foreground="White" FontSize="26"/>
-                    <Image x:Name="ImgEloSolo" Source="https://elomania.com.br/wp-content/uploads/2021/05/Emblem_Silver.png" Height="140"/>
+                    <TextBlock TextWrapping="Wrap" Text="Solo/Duo" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
+                    <Image x:Name="ImgEloSolo" Source="https://static.wikia.nocookie.net/leagueoflegends/images/3/38/Season_2019_-_Unranked.png/revision/latest/scale-to-width-down/676?cb=20190908074432" Height="140"/>
                 </StackPanel>
                 <StackPanel x:Name="InformacaoEloSolo" Width="135" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock x:Name="InfoEloSolo" TextWrapping="Wrap" Text="Elo: " Foreground="White" FontSize="22" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="InfoPdlSolo" TextWrapping="Wrap" Text="PDL: " Foreground="White" FontSize="22" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="InfoWinSolo" TextWrapping="Wrap" Text="Win: " Foreground="White" FontSize="22" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="InfoLosesSolo" TextWrapping="Wrap" Text="Loses: " Foreground="White" FontSize="22" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoEloSolo" TextWrapping="Wrap" Text="Elo: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoPdlSolo" TextWrapping="Wrap" Text="PDL: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoWinSolo" TextWrapping="Wrap" Text="Win: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoLosesSolo" TextWrapping="Wrap" Text="Loses: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
                 </StackPanel>
             </StackPanel>
 
@@ -32,14 +32,14 @@
                     <SolidColorBrush Color="Bisque" Opacity="0.1"/>
                 </StackPanel.Background>
                 <StackPanel x:Name="LocalEloFlex" Width="190">
-                    <TextBlock TextWrapping="Wrap" Text="Flex" HorizontalAlignment="Center" Foreground="White" FontSize="26"/>
-                    <Image x:Name="ImgEloFlex" Source="https://elomania.com.br/wp-content/uploads/2021/05/Emblem_Silver.png" Height="140"/>
+                    <TextBlock TextWrapping="Wrap" Text="Flex" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
+                    <Image x:Name="ImgEloFlex" Source="https://static.wikia.nocookie.net/leagueoflegends/images/3/38/Season_2019_-_Unranked.png/revision/latest/scale-to-width-down/676?cb=20190908074432" Height="140"/>
                 </StackPanel>
                 <StackPanel x:Name="ImgFlex" Width="135" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock x:Name="InfoEloFlex" TextWrapping="Wrap" Text="Elo: " Foreground="White" FontSize="22" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="InfoPdlFlex" TextWrapping="Wrap" Text="PDL: " Foreground="White" FontSize="22" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="InfoWinFlex" TextWrapping="Wrap" Text="Win: " Foreground="White" FontSize="22" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="InfoLosesFlex" TextWrapping="Wrap" Text="Loses" Foreground="White" FontSize="22" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoEloFlex" TextWrapping="Wrap" Text="Elo: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoPdlFlex" TextWrapping="Wrap" Text="PDL: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoWinFlex" TextWrapping="Wrap" Text="Win: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoLosesFlex" TextWrapping="Wrap" Text="Loses" Foreground="White" FontSize="16" Margin="10,0,0,0"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
@@ -73,6 +73,16 @@
             </StackPanel.Background>
             <TextBlock TextWrapping="Wrap" Text="Ultimos Perfis Pesquisados" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
         </StackPanel>
-        <TextBox HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" Text="Pesquise um Perfil" VerticalAlignment="Top" Opacity="0.75" Width="220" Margin="0,15,0,0"/>
+        <TextBox x:Name="BarraPesquisa" HorizontalAlignment="Center" Height="32"  TextWrapping="Wrap" VerticalAlignment="Top" Opacity="0.7" Width="220" Margin="0,15,0,0" BorderThickness="3,3,3,3" KeyUp="Pesquisarfunc" MaxLines="1" MaxLength="18" FontSize="16" TextAlignment="Left" Padding="5,1,1,5">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <StackPanel  Margin="480,92,480,539">
+            <TextBlock x:Name="Invocador" Height="60" TextWrapping="Wrap" Margin="5,5,5,5" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
+        </StackPanel>
+
     </Grid>
 </Window>

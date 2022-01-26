@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using TkFessor.Controlador;
+using TkFessor.Entidades;
 
 namespace TkFessor
 {
@@ -20,7 +23,7 @@ namespace TkFessor
         {
             Random ImagemAleatoria = new Random();
             string[] listadefotos = new string[5];
-            listadefotos[0] = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
+            listadefotos[0] = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Volibear_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
             listadefotos[1] = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Garen_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
             listadefotos[2] = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Gragas_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
             listadefotos[3] = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Tristana_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
@@ -28,6 +31,73 @@ namespace TkFessor
 
             return listadefotos[ImagemAleatoria.Next(5)];
 
+        }
+
+        public void AlterarSolo(string nickname)
+        {
+            ColetarDados executa = new ColetarDados();
+            DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);
+            List<DadosPerfil> infoFilas = executa.BuscarPerfil(dadosInvocador.id);
+
+            Invocador.Text = dadosInvocador.name;
+            
+            foreach (var fila in infoFilas)
+            {
+                if (fila.queueType == "RANKED_SOLO_5x5")
+                {
+                    InfoEloSolo.Text = "Elo: " + fila.tier + " " + fila.rank;
+                    InfoPdlSolo.Text = "PDL: " + fila.leaguePoints;
+                    InfoWinSolo.Text = "Wins: " + fila.wins;
+                    InfoLosesSolo.Text = "Loses: " + fila.losses;
+
+                    var img = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_"+ fila.tier +".png") as ImageSource;
+                    ImgEloSolo.Source = img;
+                }
+            }
+
+            foreach (var filaFlex in infoFilas)
+            {
+                if (filaFlex.queueType == "RANKED_FLEX_SR")
+                {
+                    InfoEloFlex.Text = "Elo: " + filaFlex.tier + " " + filaFlex.rank;
+                    InfoPdlFlex.Text = "PDL: " + filaFlex.leaguePoints;
+                    InfoWinFlex.Text = "Wins: " + filaFlex.wins;
+                    InfoLosesFlex.Text = "Loses: " + filaFlex.losses;
+
+                    var img = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_" + filaFlex.tier + ".png") as ImageSource;
+                    ImgEloFlex.Source = img;
+                }
+                else
+                {
+                    var img = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_Unranked.png") as ImageSource;
+                    ImgEloFlex.Source = img;
+                }
+            }
+        }
+
+        private void Pesquisarfunc(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                InfoEloSolo.Text = "Elo: ";
+                InfoPdlSolo.Text = "PDL: ";
+                InfoWinSolo.Text = "Wins: ";
+                InfoLosesSolo.Text = "Loses: ";
+
+                InfoEloFlex.Text = "Elo: ";
+                InfoPdlFlex.Text = "PDL: ";
+                InfoWinFlex.Text = "Wins: ";
+                InfoLosesFlex.Text = "Loses: ";
+
+                var img = new ImageSourceConverter().ConvertFromString(mudarimagemfundo()) as ImageSource;
+                ImagemFundo.Source = img;
+
+                ColetarDados executa = new ColetarDados();
+
+                AlterarSolo(BarraPesquisa.Text);
+                BarraPesquisa.Text = String.Empty;
+
+            }
         }
     }
 }
