@@ -7,9 +7,6 @@ using TkFessor.Entidades;
 
 namespace TkFessor
 {
-    /// <summary>
-    /// Interação lógica para MainWindow.xam
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -37,10 +34,24 @@ namespace TkFessor
         {
             ColetarDados executa = new ColetarDados();
             DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);
+
+            if (dadosInvocador.id == null)
+            {
+                Invocador.Text = "Esse Invocador não exixte!";
+                ImgIcone.Visibility = Visibility.Collapsed;
+
+                return;
+            }
+
             List<DadosPerfil> infoFilas = executa.BuscarPerfil(dadosInvocador.id);
 
+            var icone = new ImageSourceConverter().ConvertFromString("https://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/" + dadosInvocador.profileIconId + ".png") as ImageSource;
+            ImgIcone.Source = icone;
+            ImgIcone.Visibility = Visibility.Visible;
+
             Invocador.Text = dadosInvocador.name;
-            
+            Lvl.Text = dadosInvocador.summonerLevel;
+
             foreach (var fila in infoFilas)
             {
                 if (fila.queueType == "RANKED_SOLO_5x5")
@@ -50,7 +61,7 @@ namespace TkFessor
                     InfoWinSolo.Text = "Wins: " + fila.wins;
                     InfoLosesSolo.Text = "Loses: " + fila.losses;
 
-                    var img = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_"+ fila.tier +".png") as ImageSource;
+                    var img = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_" + fila.tier + ".png") as ImageSource;
                     ImgEloSolo.Source = img;
                 }
             }
@@ -65,11 +76,6 @@ namespace TkFessor
                     InfoLosesFlex.Text = "Loses: " + filaFlex.losses;
 
                     var img = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_" + filaFlex.tier + ".png") as ImageSource;
-                    ImgEloFlex.Source = img;
-                }
-                else
-                {
-                    var img = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_Unranked.png") as ImageSource;
                     ImgEloFlex.Source = img;
                 }
             }
@@ -92,7 +98,11 @@ namespace TkFessor
                 var img = new ImageSourceConverter().ConvertFromString(mudarimagemfundo()) as ImageSource;
                 ImagemFundo.Source = img;
 
-                ColetarDados executa = new ColetarDados();
+                var imgSolo = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_Unranked.png") as ImageSource;
+                ImgEloSolo.Source = imgSolo;
+
+                var imgFlex = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_Unranked.png") as ImageSource;
+                ImgEloFlex.Source = imgFlex;
 
                 AlterarSolo(BarraPesquisa.Text);
                 BarraPesquisa.Text = String.Empty;

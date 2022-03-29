@@ -16,7 +16,7 @@ namespace TkFessor.Controlador
             var client = new RestClient("https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + nickname);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            request.AddHeader("X-Riot-Token", "RGAPI-022d267e-3754-47ba-ab6b-3228226bf467");
+            request.AddHeader("X-Riot-Token", "RGAPI-0f5423c1-8b6f-4b43-b172-da9a3bf8b762");
             IRestResponse response = client.Execute(request);
 
             DadosInvocador saida = JsonConvert.DeserializeObject<DadosInvocador>(response.Content);
@@ -29,10 +29,12 @@ namespace TkFessor.Controlador
             var client = new RestClient("https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            request.AddHeader("X-Riot-Token", "RGAPI-022d267e-3754-47ba-ab6b-3228226bf467");
+            request.AddHeader("X-Riot-Token", "RGAPI-0f5423c1-8b6f-4b43-b172-da9a3bf8b762");
             IRestResponse response = client.Execute(request);
 
             List<DadosPerfil> saida = JsonConvert.DeserializeObject<List<DadosPerfil>>(response.Content);
+
+
 
             return saida;
         }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Debug\
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Release\
 TkFessor
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\App.xaml
 1219584333
-2-51477536
-10825648610
+
+9-1787206452
 26-189629073
 MainWindow.xaml;
 
-False
+True
 

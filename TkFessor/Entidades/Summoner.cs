@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TkFessor.Entidades
 {
-    public class DadosInvocador
+    public class Summoner
     {
         public string id { get; set; }
         public string accountId { get; set; }

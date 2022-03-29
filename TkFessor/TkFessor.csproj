@@ -99,8 +99,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controlador\ColetarDados.cs" />
+    <Compile Include="Entidades\Champions.cs" />
     <Compile Include="Entidades\DadosInvocador.cs" />
     <Compile Include="Entidades\DadosPerfil.cs" />
+    <Compile Include="Entidades\Summoner.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -124,6 +126,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\TkFessor.exe.config" />
+    <None Include="Entidades\Champions.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -166,6 +170,13 @@
     <EmbeddedResource Include="Dados\Imagens\Emblem_Unranked.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\TkFessor.exe" />
+    <Content Include="bin\Debug\TkFessor.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
