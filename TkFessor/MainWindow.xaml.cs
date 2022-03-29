@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using TkFessor.Controlador;
 using TkFessor.Entidades;
@@ -9,6 +11,9 @@ namespace TkFessor
 {
     public partial class MainWindow : Window
     {
+        List<string> UltimosPerfilPesquisados = new List<string>();
+        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,12 +38,14 @@ namespace TkFessor
         public void AlterarSolo(string nickname)
         {
             ColetarDados executa = new ColetarDados();
-            DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);
+            DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);           
 
             if (dadosInvocador.id == null)
             {
-                Invocador.Text = "Esse Invocador não exixte!";
+                Invocador.Text = "Esse Invocador não existe!";
                 ImgIcone.Visibility = Visibility.Collapsed;
+                Lvl.Text = "";
+                Invocador.Margin = new Thickness(-55, 5, 5, 5);
 
                 return;
             }
@@ -46,11 +53,12 @@ namespace TkFessor
             List<DadosPerfil> infoFilas = executa.BuscarPerfil(dadosInvocador.id);
 
             var icone = new ImageSourceConverter().ConvertFromString("https://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/" + dadosInvocador.profileIconId + ".png") as ImageSource;
-            ImgIcone.Source = icone;
+            LinkImg.ImageSource = icone;
             ImgIcone.Visibility = Visibility.Visible;
 
+            Invocador.Margin = new Thickness(5, 5, 5, 5);
             Invocador.Text = dadosInvocador.name;
-            Lvl.Text = dadosInvocador.summonerLevel;
+            Lvl.Text = "Lvl: " + dadosInvocador.summonerLevel;
 
             foreach (var fila in infoFilas)
             {
@@ -105,9 +113,50 @@ namespace TkFessor
                 ImgEloFlex.Source = imgFlex;
 
                 AlterarSolo(BarraPesquisa.Text);
-                BarraPesquisa.Text = String.Empty;
+       
+                if(UltimosPerfilPesquisados.Find(item => item == BarraPesquisa.Text) == null && Invocador.Text != "Esse Invocador não existe!")
+                {
+                    if(UltimosPerfilPesquisados.Count == 8)
+                    {
+                        UltimosPerfilPesquisados.Remove(UltimosPerfilPesquisados[0]);
+                    }
 
+                    UltimosPerfilPesquisados.Add(Invocador.Text);
+                }
+
+                PerfilPesquisado.Children.Clear();
+
+                foreach (var perfil in UltimosPerfilPesquisados)
+                {
+                    criarLinhas(perfil);
+                }
+
+                BarraPesquisa.Text = String.Empty;
             }
+        }
+
+
+
+        private void criarLinhas(string nomeInvocador)
+        {
+            TextBlock perfilName = new TextBlock();
+
+            perfilName.Text = nomeInvocador;
+            perfilName.Foreground = Brushes.White;
+            perfilName.Opacity = 100;
+            perfilName.FontSize = 20;
+            //perfilName.FontWeight = FontWeights.Bold;
+            perfilName.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ClicaLinha);
+            perfilName.MouseEnter += (s, e) => Mouse.OverrideCursor = Cursors.Hand;
+            perfilName.MouseLeave += (s, e) => Mouse.OverrideCursor = Cursors.Arrow;
+
+
+            PerfilPesquisado.Children.Add(perfilName);
+        }
+        private void ClicaLinha(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock click = sender as TextBlock;
+            AlterarSolo(click.Text);
         }
     }
 }

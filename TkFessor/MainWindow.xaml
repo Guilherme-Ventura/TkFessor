@@ -22,7 +22,7 @@
                 <StackPanel x:Name="InformacaoEloSolo" Width="135" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock x:Name="InfoEloSolo" TextWrapping="Wrap" Text="Elo: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
                     <TextBlock x:Name="InfoPdlSolo" TextWrapping="Wrap" Text="PDL: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="InfoWinSolo" TextWrapping="Wrap" Text="Win: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoWinSolo" TextWrapping="Wrap" Text="Wins: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
                     <TextBlock x:Name="InfoLosesSolo" TextWrapping="Wrap" Text="Loses: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
                 </StackPanel>
             </StackPanel>
@@ -38,7 +38,7 @@
                 <StackPanel x:Name="ImgFlex" Width="135" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock x:Name="InfoEloFlex" TextWrapping="Wrap" Text="Elo: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
                     <TextBlock x:Name="InfoPdlFlex" TextWrapping="Wrap" Text="PDL: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="InfoWinFlex" TextWrapping="Wrap" Text="Win: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="InfoWinFlex" TextWrapping="Wrap" Text="Wins: " Foreground="White" FontSize="16" Margin="10,0,0,0"/>
                     <TextBlock x:Name="InfoLosesFlex" TextWrapping="Wrap" Text="Loses" Foreground="White" FontSize="16" Margin="10,0,0,0"/>
                 </StackPanel>
             </StackPanel>
@@ -72,7 +72,12 @@
                 <SolidColorBrush Color="Bisque" Opacity="0.1"/>
             </StackPanel.Background>
             <TextBlock TextWrapping="Wrap" Text="Ultimos Perfis Pesquisados" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
+
+            <StackPanel x:Name="PerfilPesquisado" Height="353" Width="300" Margin="15">
+
+            </StackPanel>
         </StackPanel>
+        
         <TextBox x:Name="BarraPesquisa" HorizontalAlignment="Center" Height="32"  TextWrapping="Wrap" VerticalAlignment="Top" Opacity="0.7" Width="220" Margin="0,15,0,0" BorderThickness="3,3,3,3" KeyUp="Pesquisarfunc" MaxLines="1" MaxLength="18" FontSize="16" TextAlignment="Left" Padding="5,1,1,5">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -80,13 +85,18 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <StackPanel  Margin="525,65,385,501">
+        
+        <StackPanel  Margin="525,80,385,501">
             <TextBlock x:Name="Invocador" Height="60" TextWrapping="Wrap" Margin="5,5,5,5" Foreground="White" FontSize="30" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel x:Name="PainelIcone" Margin="400,65,780,500">
-            <Image x:Name="ImgIcone" Height="88" Width="107" RenderTransformOrigin="0.439,0.516" />
-            <TextBlock x:Name="Lvl" TextWrapping="Wrap"  Foreground="White" FontSize="20" TextAlignment="Center" Width="86" Height="25"/>
+        <StackPanel x:Name="PainelIcone" Margin="400,65,780,500" Width="118">
+            <Ellipse x:Name="ImgIcone" Width="90" Height="90">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="LinkImg"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock x:Name="Lvl" TextWrapping="Wrap" Foreground="White" FontSize="20" TextAlignment="Center" Width="100" Height="30"/>
         </StackPanel>
 
     </Grid>
