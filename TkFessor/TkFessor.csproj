@@ -99,10 +99,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controlador\ColetarDados.cs" />
+    <Compile Include="Entidades\DadosMaestria.cs" />
     <Compile Include="Entidades\Champions.cs" />
     <Compile Include="Entidades\DadosInvocador.cs" />
     <Compile Include="Entidades\DadosPerfil.cs" />
-    <Compile Include="Entidades\Summoner.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

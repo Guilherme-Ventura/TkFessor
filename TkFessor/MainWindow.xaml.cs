@@ -38,7 +38,7 @@ namespace TkFessor
         public void AlterarSolo(string nickname)
         {
             ColetarDados executa = new ColetarDados();
-            DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);           
+            DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);
 
             if (dadosInvocador.id == null)
             {
@@ -51,6 +51,8 @@ namespace TkFessor
             }
 
             List<DadosPerfil> infoFilas = executa.BuscarPerfil(dadosInvocador.id);
+            List<DadosMaestria> maestria = executa.BuscarMaestria(dadosInvocador.id);
+
 
             var icone = new ImageSourceConverter().ConvertFromString("https://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/" + dadosInvocador.profileIconId + ".png") as ImageSource;
             LinkImg.ImageSource = icone;
@@ -59,6 +61,7 @@ namespace TkFessor
             Invocador.Margin = new Thickness(5, 5, 5, 5);
             Invocador.Text = dadosInvocador.name;
             Lvl.Text = "Lvl: " + dadosInvocador.summonerLevel;
+            
 
             foreach (var fila in infoFilas)
             {

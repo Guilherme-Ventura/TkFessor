@@ -50,6 +50,7 @@
                     <SolidColorBrush Color="Bisque" Opacity="0.1"/>
                 </StackPanel.Background>
                 <TextBlock TextWrapping="Wrap" Text="Partidas recentes (útimas 10 partidas)" HorizontalAlignment="Center" Foreground="White" FontSize="18"/>
+                <TextBlock x:Name="Champ" TextWrapping="Wrap" Text="pela" HorizontalAlignment="Center" Foreground="White" FontSize="16" Margin="10"/>
             </StackPanel>
         </StackPanel>
 
