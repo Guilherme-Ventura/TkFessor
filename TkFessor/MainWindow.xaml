@@ -50,7 +50,6 @@
                     <SolidColorBrush Color="Bisque" Opacity="0.1"/>
                 </StackPanel.Background>
                 <TextBlock TextWrapping="Wrap" Text="Partidas recentes (útimas 10 partidas)" HorizontalAlignment="Center" Foreground="White" FontSize="18"/>
-                <TextBlock x:Name="Champ" TextWrapping="Wrap" Text="pela" HorizontalAlignment="Center" Foreground="White" FontSize="16" Margin="10"/>
             </StackPanel>
         </StackPanel>
 
@@ -61,11 +60,15 @@
             <TextBlock  TextWrapping="Wrap" Text="Historico" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
         </StackPanel>
 
-        <StackPanel x:Name="Rotas" Height="200" Width="340" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,380" >
+        <StackPanel Height="200" Width="340" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,380" >
             <StackPanel.Background >
                 <SolidColorBrush Color="Bisque" Opacity="0.1"/>
             </StackPanel.Background>
-            <TextBlock TextWrapping="Wrap" Text="Rotas Preferida" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
+            <TextBlock TextWrapping="Wrap" Text="Maestrias" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
+
+            <StackPanel x:Name="InfoMaestrias" Height="160" Width="320">
+                
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Height="430" Width="340" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,20">

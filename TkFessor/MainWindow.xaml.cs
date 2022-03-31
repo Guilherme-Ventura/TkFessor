@@ -17,11 +17,11 @@ namespace TkFessor
         public MainWindow()
         {
             InitializeComponent();
-            var img = new ImageSourceConverter().ConvertFromString(mudarimagemfundo()) as ImageSource;
+            var img = new ImageSourceConverter().ConvertFromString(MudarimagemFundo()) as ImageSource;
             ImagemFundo.Source = img;
         }
         // Imagens de Fundo
-        public string mudarimagemfundo()
+        public string MudarimagemFundo()
         {
             Random ImagemAleatoria = new Random();
             string[] listadefotos = new string[5];
@@ -37,6 +37,7 @@ namespace TkFessor
 
         public void AlterarSolo(string nickname)
         {
+            InfoMaestrias.Children.Clear();
             ColetarDados executa = new ColetarDados();
             DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);
 
@@ -51,8 +52,7 @@ namespace TkFessor
             }
 
             List<DadosPerfil> infoFilas = executa.BuscarPerfil(dadosInvocador.id);
-            List<DadosMaestria> maestria = executa.BuscarMaestria(dadosInvocador.id);
-
+            List<DadosMaestria> maestriaInvocador = executa.BuscarMaestria(dadosInvocador.id);
 
             var icone = new ImageSourceConverter().ConvertFromString("https://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/" + dadosInvocador.profileIconId + ".png") as ImageSource;
             LinkImg.ImageSource = icone;
@@ -61,7 +61,11 @@ namespace TkFessor
             Invocador.Margin = new Thickness(5, 5, 5, 5);
             Invocador.Text = dadosInvocador.name;
             Lvl.Text = "Lvl: " + dadosInvocador.summonerLevel;
-            
+
+            for (int i = 0; i < 5; i++)
+            {
+                CriarLinhasMaestria(maestriaInvocador[i].championId + " " + maestriaInvocador[i].championPoints);
+            }
 
             foreach (var fila in infoFilas)
             {
@@ -106,7 +110,7 @@ namespace TkFessor
                 InfoWinFlex.Text = "Wins: ";
                 InfoLosesFlex.Text = "Loses: ";
 
-                var img = new ImageSourceConverter().ConvertFromString(mudarimagemfundo()) as ImageSource;
+                var img = new ImageSourceConverter().ConvertFromString(MudarimagemFundo()) as ImageSource;
                 ImagemFundo.Source = img;
 
                 var imgSolo = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Emblem_Unranked.png") as ImageSource;
@@ -131,16 +135,27 @@ namespace TkFessor
 
                 foreach (var perfil in UltimosPerfilPesquisados)
                 {
-                    criarLinhas(perfil);
+                    CriarLinhas(perfil);
                 }
 
                 BarraPesquisa.Text = String.Empty;
             }
         }
+        
+        private void CriarLinhasMaestria(string pontos)
+        {
+            TextBlock maestria = new TextBlock();
 
+            maestria.Text = pontos;
+            maestria.Foreground = Brushes.White;
+            maestria.FontSize = 16;
+            maestria.HorizontalAlignment = HorizontalAlignment.Center;
+            maestria.Margin = new Thickness(10);
 
+            InfoMaestrias.Children.Add(maestria);
+        }
 
-        private void criarLinhas(string nomeInvocador)
+        private void CriarLinhas(string nomeInvocador)
         {
             TextBlock perfilName = new TextBlock();
 
@@ -148,14 +163,13 @@ namespace TkFessor
             perfilName.Foreground = Brushes.White;
             perfilName.Opacity = 100;
             perfilName.FontSize = 20;
-            //perfilName.FontWeight = FontWeights.Bold;
             perfilName.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ClicaLinha);
             perfilName.MouseEnter += (s, e) => Mouse.OverrideCursor = Cursors.Hand;
             perfilName.MouseLeave += (s, e) => Mouse.OverrideCursor = Cursors.Arrow;
 
-
             PerfilPesquisado.Children.Add(perfilName);
         }
+
         private void ClicaLinha(object sender, MouseButtonEventArgs e)
         {
             TextBlock click = sender as TextBlock;
