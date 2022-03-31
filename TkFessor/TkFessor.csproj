@@ -98,6 +98,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entidades\DadosHistorico.cs" />
+    <Compile Include="Entidades\ChaveHistorico.cs" />
     <Compile Include="Controlador\ColetarDados.cs" />
     <Compile Include="Entidades\DadosMaestria.cs" />
     <Compile Include="Entidades\Champions.cs" />

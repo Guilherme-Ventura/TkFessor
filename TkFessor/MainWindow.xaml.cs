@@ -53,6 +53,8 @@ namespace TkFessor
 
             List<DadosPerfil> infoFilas = executa.BuscarPerfil(dadosInvocador.id);
             List<DadosMaestria> maestriaInvocador = executa.BuscarMaestria(dadosInvocador.id);
+            List<string> chaves = executa.BuscarChaveHistorico(dadosInvocador.puuId);
+            DadosHistorico.Rootobject partidas = executa.BuscarInfoPartda(chaves[0]);
 
             var icone = new ImageSourceConverter().ConvertFromString("https://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/" + dadosInvocador.profileIconId + ".png") as ImageSource;
             LinkImg.ImageSource = icone;

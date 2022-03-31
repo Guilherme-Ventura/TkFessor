@@ -50,5 +50,33 @@ namespace TkFessor.Controlador
 
             return saida;
         }
+
+        public List<string> BuscarChaveHistorico(string puuid)
+        {
+            var client = new RestClient("https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count=5");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("X-Riot-Token", "RGAPI-210e41b0-3770-4921-acf5-05af87dac552");
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+
+            List<string> saida = JsonConvert.DeserializeObject<List<string>>(response.Content);
+
+            return saida;
+        }
+
+        public DadosHistorico.Rootobject BuscarInfoPartda(string chaveHistorico)
+        {
+            var client = new RestClient("https://americas.api.riotgames.com/lol/match/v5/matches/" + chaveHistorico);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("X-Riot-Token", "RGAPI-210e41b0-3770-4921-acf5-05af87dac552");
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+
+            DadosHistorico.Rootobject saida = JsonConvert.DeserializeObject<DadosHistorico.Rootobject>(response.Content);
+
+            return saida;
+        }
     }
 }
