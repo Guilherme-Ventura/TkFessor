@@ -12,7 +12,6 @@ namespace TkFessor
     public partial class MainWindow : Window
     {
         List<string> UltimosPerfilPesquisados = new List<string>();
-        
 
         public MainWindow()
         {
@@ -32,12 +31,13 @@ namespace TkFessor
             listadefotos[4] = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
 
             return listadefotos[ImagemAleatoria.Next(5)];
-
         }
 
         public void AlterarSolo(string nickname)
         {
             InfoMaestrias.Children.Clear();
+            InfoHistorico.Children.Clear();
+
             ColetarDados executa = new ColetarDados();
             DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);
 
@@ -54,7 +54,6 @@ namespace TkFessor
             List<DadosPerfil> infoFilas = executa.BuscarPerfil(dadosInvocador.id);
             List<DadosMaestria> maestriaInvocador = executa.BuscarMaestria(dadosInvocador.id);
             List<string> chaves = executa.BuscarChaveHistorico(dadosInvocador.puuId);
-            DadosHistorico.Rootobject partidas = executa.BuscarInfoPartda(chaves[0]);
 
             var icone = new ImageSourceConverter().ConvertFromString("https://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/" + dadosInvocador.profileIconId + ".png") as ImageSource;
             LinkImg.ImageSource = icone;
@@ -96,8 +95,25 @@ namespace TkFessor
                     ImgEloFlex.Source = img;
                 }
             }
-        }
 
+            try
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    DadosHistorico partidas = executa.BuscarInfoPartida(chaves[i]);
+                    var participante = Array.Find(partidas.info.participants, item => item.summonerName == dadosInvocador.name);
+
+                    string resultadoPartida = participante.win ? "Vitória" : "Derrota";
+
+                    CriarLinhasHistorico(participante.championName + " " + participante.lane + " " + partidas.info.gameDuration + " " + resultadoPartida);
+                }
+            }
+            catch
+            {
+                if (chaves.Count == 0)
+                    CriarLinhasHistorico("Esse jogador não possui partidas recentes");
+            }
+        }
         private void Pesquisarfunc(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -122,10 +138,10 @@ namespace TkFessor
                 ImgEloFlex.Source = imgFlex;
 
                 AlterarSolo(BarraPesquisa.Text);
-       
-                if(UltimosPerfilPesquisados.Find(item => item == BarraPesquisa.Text) == null && Invocador.Text != "Esse Invocador não existe!")
+
+                if (UltimosPerfilPesquisados.Find(item => item.ToLower() == BarraPesquisa.Text.ToLower()) == null && Invocador.Text != "Esse Invocador não existe!")
                 {
-                    if(UltimosPerfilPesquisados.Count == 8)
+                    if (UltimosPerfilPesquisados.Count == 8)
                     {
                         UltimosPerfilPesquisados.Remove(UltimosPerfilPesquisados[0]);
                     }
@@ -143,7 +159,18 @@ namespace TkFessor
                 BarraPesquisa.Text = String.Empty;
             }
         }
-        
+        private void CriarLinhasHistorico(string dados)
+        {
+            TextBlock historico = new TextBlock();
+
+            historico.Text = dados;
+            historico.Foreground = Brushes.White;
+            historico.FontSize = 16;
+            historico.HorizontalAlignment = HorizontalAlignment.Center;
+            historico.Margin = new Thickness(10);
+
+            InfoHistorico.Children.Add(historico);
+        }
         private void CriarLinhasMaestria(string pontos)
         {
             TextBlock maestria = new TextBlock();

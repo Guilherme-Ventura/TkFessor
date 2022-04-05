@@ -11,12 +11,13 @@ namespace TkFessor.Controlador
 {
     public class ColetarDados
     {
+        string apiKey = "RGAPI-a144ce29-21fb-4305-883b-fbcbc82ff253";
         public DadosInvocador BuscarRequicicao(string nickname)
         {
             var client = new RestClient("https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + nickname);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            request.AddHeader("X-Riot-Token", "RGAPI-210e41b0-3770-4921-acf5-05af87dac552");
+            request.AddHeader("X-Riot-Token", apiKey);
             IRestResponse response = client.Execute(request);
 
             DadosInvocador saida = JsonConvert.DeserializeObject<DadosInvocador>(response.Content);
@@ -29,7 +30,7 @@ namespace TkFessor.Controlador
             var client = new RestClient("https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            request.AddHeader("X-Riot-Token", "RGAPI-210e41b0-3770-4921-acf5-05af87dac552");
+            request.AddHeader("X-Riot-Token", apiKey);
             IRestResponse response = client.Execute(request);
 
             List<DadosPerfil> saida = JsonConvert.DeserializeObject<List<DadosPerfil>>(response.Content);
@@ -42,7 +43,7 @@ namespace TkFessor.Controlador
             var client = new RestClient("https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            request.AddHeader("X-Riot-Token", "RGAPI-210e41b0-3770-4921-acf5-05af87dac552");
+            request.AddHeader("X-Riot-Token", apiKey);
             IRestResponse response = client.Execute(request);
             Console.WriteLine(response.Content);
 
@@ -53,10 +54,10 @@ namespace TkFessor.Controlador
 
         public List<string> BuscarChaveHistorico(string puuid)
         {
-            var client = new RestClient("https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count=5");
+            var client = new RestClient("https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count=10");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            request.AddHeader("X-Riot-Token", "RGAPI-210e41b0-3770-4921-acf5-05af87dac552");
+            request.AddHeader("X-Riot-Token", apiKey);
             IRestResponse response = client.Execute(request);
             Console.WriteLine(response.Content);
 
@@ -65,16 +66,16 @@ namespace TkFessor.Controlador
             return saida;
         }
 
-        public DadosHistorico.Rootobject BuscarInfoPartda(string chaveHistorico)
+        public DadosHistorico BuscarInfoPartida(string chaveHistorico)
         {
             var client = new RestClient("https://americas.api.riotgames.com/lol/match/v5/matches/" + chaveHistorico);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            request.AddHeader("X-Riot-Token", "RGAPI-210e41b0-3770-4921-acf5-05af87dac552");
+            request.AddHeader("X-Riot-Token", apiKey);
             IRestResponse response = client.Execute(request);
             Console.WriteLine(response.Content);
 
-            DadosHistorico.Rootobject saida = JsonConvert.DeserializeObject<DadosHistorico.Rootobject>(response.Content);
+            DadosHistorico saida = JsonConvert.DeserializeObject<DadosHistorico>(response.Content);
 
             return saida;
         }

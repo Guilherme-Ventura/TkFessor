@@ -53,11 +53,14 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel x:Name="Historico"  Height="450" VerticalAlignment="Bottom" Width="540" Margin="0,0,10,20">
+        <StackPanel x:Name="PainelHistorico"  Height="450" VerticalAlignment="Bottom" Width="540" Margin="0,0,10,20">
             <StackPanel.Background>
                 <SolidColorBrush Color="Bisque" Opacity="0.1"/>
             </StackPanel.Background>
             <TextBlock  TextWrapping="Wrap" Text="Historico" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
+            <StackPanel x:Name="InfoHistorico" Height=" 400" Width="520">
+                
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Height="200" Width="340" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,380" >
