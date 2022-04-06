@@ -12,15 +12,15 @@ namespace TkFessor.Entidades
         public string type { get; set; }
         public string format { get; set; }
         public string version { get; set; }
-        public Data data { get; set; }
+        public List<Campeao> data { get; set; }
     }
 
     public class Data
     {
-        public List<Campiao> capioes { get; set; }
+        public List<Campeao> capioes { get; set; }
     }
 
-    public class Campiao
+    public class Campeao
     {
         public string version { get; set; }
         public string id { get; set; }
@@ -56,24 +56,24 @@ namespace TkFessor.Entidades
 
     public class Stats
     {
-        public int hp { get; set; }
-        public int hpperlevel { get; set; }
-        public int mp { get; set; }
-        public int mpperlevel { get; set; }
-        public int movespeed { get; set; }
-        public int armor { get; set; }
+        public double hp { get; set; }
+        public double hpperlevel { get; set; }
+        public double mp { get; set; }
+        public double mpperlevel { get; set; }
+        public double movespeed { get; set; }
+        public double armor { get; set; }
         public float armorperlevel { get; set; }
-        public int spellblock { get; set; }
+        public double spellblock { get; set; }
         public float spellblockperlevel { get; set; }
-        public int attackrange { get; set; }
-        public int hpregen { get; set; }
-        public int hpregenperlevel { get; set; }
-        public int mpregen { get; set; }
-        public int mpregenperlevel { get; set; }
-        public int crit { get; set; }
-        public int critperlevel { get; set; }
-        public int attackdamage { get; set; }
-        public int attackdamageperlevel { get; set; }
+        public double attackrange { get; set; }
+        public double hpregen { get; set; }
+        public double hpregenperlevel { get; set; }
+        public double mpregen { get; set; }
+        public double mpregenperlevel { get; set; }
+        public double crit { get; set; }
+        public double critperlevel { get; set; }
+        public double attackdamage { get; set; }
+        public double attackdamageperlevel { get; set; }
         public float attackspeedperlevel { get; set; }
         public float attackspeed { get; set; }
     }

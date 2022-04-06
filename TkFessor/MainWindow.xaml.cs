@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,11 +16,14 @@ namespace TkFessor
     {
         List<string> UltimosPerfilPesquisados = new List<string>();
 
+
+
         public MainWindow()
         {
             InitializeComponent();
             var img = new ImageSourceConverter().ConvertFromString(MudarimagemFundo()) as ImageSource;
             ImagemFundo.Source = img;
+            //infoCampeao("");
         }
         // Imagens de Fundo
         public string MudarimagemFundo()
@@ -65,7 +71,9 @@ namespace TkFessor
 
             for (int i = 0; i < 5; i++)
             {
-                CriarLinhasMaestria(maestriaInvocador[i].championId + " " + maestriaInvocador[i].championPoints);
+                string id = maestriaInvocador[i].championId;
+                Campeao campeao = infoCampeao(id);
+                CriarLinhasMaestria(campeao.name + " " + maestriaInvocador[i].championPoints);
             }
 
             foreach (var fila in infoFilas)
@@ -113,6 +121,15 @@ namespace TkFessor
                 if (chaves.Count == 0)
                     CriarLinhasHistorico("Esse jogador não possui partidas recentes");
             }
+        }
+
+        public Campeao infoCampeao(string keyChamp)
+        {
+            var file = @"Entidades\Champions.json";
+            var saida = JsonConvert.DeserializeObject<Champions>(File.ReadAllText(file, Encoding.UTF8));
+            var camp = saida.data.Find(i => i.key == keyChamp);
+
+            return camp;
         }
         private void Pesquisarfunc(object sender, System.Windows.Input.KeyEventArgs e)
         {

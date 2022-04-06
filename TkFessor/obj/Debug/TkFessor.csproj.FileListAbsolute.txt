@@ -111,3 +111,4 @@ C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Debug\TkFessor.csproj.Cop
 C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Debug\TkFessor.exe
 C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Debug\TkFessor.pdb
 C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Debug\TkFessor_Content.g.cs
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Entidades\Champions.json
