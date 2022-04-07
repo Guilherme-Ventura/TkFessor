@@ -29,7 +29,7 @@ namespace TkFessor.Entidades
         public string title { get; set; }
         public string blurb { get; set; }
         public Info info { get; set; }
-        public Image image { get; set; }
+        public ImageCampeao image { get; set; }
         public string[] tags { get; set; }
         public string partype { get; set; }
         public Stats stats { get; set; }
@@ -43,7 +43,7 @@ namespace TkFessor.Entidades
         public int difficulty { get; set; }
     }
 
-    public class Image
+    public class ImageCampeao
     {
         public string full { get; set; }
         public string sprite { get; set; }

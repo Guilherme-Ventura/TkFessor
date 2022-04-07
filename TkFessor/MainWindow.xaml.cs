@@ -15,7 +15,7 @@ namespace TkFessor
     public partial class MainWindow : Window
     {
         List<string> UltimosPerfilPesquisados = new List<string>();
-
+        string CampImage = "";
 
 
         public MainWindow()
@@ -23,7 +23,6 @@ namespace TkFessor
             InitializeComponent();
             var img = new ImageSourceConverter().ConvertFromString(MudarimagemFundo()) as ImageSource;
             ImagemFundo.Source = img;
-            //infoCampeao("");
         }
         // Imagens de Fundo
         public string MudarimagemFundo()
@@ -73,7 +72,9 @@ namespace TkFessor
             {
                 string id = maestriaInvocador[i].championId;
                 Campeao campeao = infoCampeao(id);
-                CriarLinhasMaestria(campeao.name + " " + maestriaInvocador[i].championPoints);
+                CampImage = campeao.image.full;
+
+                CriarLinhasMaestria(campeao.name + " " + maestriaInvocador[i].championPoints, maestriaInvocador[i].championLevel);
             }
 
             foreach (var fila in infoFilas)
@@ -188,17 +189,36 @@ namespace TkFessor
 
             InfoHistorico.Children.Add(historico);
         }
-        private void CriarLinhasMaestria(string pontos)
+        private void CriarLinhasMaestria(string TextInfoCamp, string CampLvlMaestria)
         {
-            TextBlock maestria = new TextBlock();
+            StackPanel stackPanel = new StackPanel();
+            stackPanel.Orientation = Orientation.Horizontal;
+            stackPanel.Margin = new Thickness(0,0,0,5);
 
-            maestria.Text = pontos;
+            Image imageChampMaestria = new Image();
+            imageChampMaestria.Source = new ImageSourceConverter().ConvertFromString("http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/" + CampImage) as ImageSource;
+            imageChampMaestria.Height = 50;
+            imageChampMaestria.Width = 50;
+
+            Image imageIconeMaestria = new Image();
+            imageIconeMaestria.Source = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Maestria\\" + CampLvlMaestria + ".webp") as ImageSource;
+
+            imageIconeMaestria.Height = 50;
+            imageIconeMaestria.Width = 50;
+            imageIconeMaestria.Margin = new Thickness(10,0,0,0);
+
+            TextBlock maestria = new TextBlock();
+            maestria.Text = TextInfoCamp;
             maestria.Foreground = Brushes.White;
             maestria.FontSize = 16;
             maestria.HorizontalAlignment = HorizontalAlignment.Center;
             maestria.Margin = new Thickness(10);
+            
+            stackPanel.Children.Add(imageChampMaestria);
+            stackPanel.Children.Add(imageIconeMaestria);
+            stackPanel.Children.Add(maestria);
 
-            InfoMaestrias.Children.Add(maestria);
+            InfoMaestrias.Children.Add(stackPanel);
         }
 
         private void CriarLinhas(string nomeInvocador)

@@ -112,3 +112,10 @@ C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Debug\TkFessor.exe
 C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Debug\TkFessor.pdb
 C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\obj\Debug\TkFessor_Content.g.cs
 C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Entidades\Champions.json
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Dados\Imagens\Maestria\1.webp
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Dados\Imagens\Maestria\2.webp
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Dados\Imagens\Maestria\3.webp
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Dados\Imagens\Maestria\4.webp
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Dados\Imagens\Maestria\5.webp
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Dados\Imagens\Maestria\6.webp
+C:\Users\Takato\Desktop\Projetos\TkFessor\TkFessor\bin\Debug\Dados\Imagens\Maestria\7.webp

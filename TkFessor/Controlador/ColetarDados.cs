@@ -11,7 +11,7 @@ namespace TkFessor.Controlador
 {
     public class ColetarDados
     {
-        string apiKey = "RGAPI-a144ce29-21fb-4305-883b-fbcbc82ff253";
+        string apiKey = "RGAPI-eb35390e-e049-47d4-97ad-1c7bf2063eb6";
         public DadosInvocador BuscarRequicicao(string nickname)
         {
             var client = new RestClient("https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + nickname);

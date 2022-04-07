@@ -70,7 +70,11 @@
             <TextBlock TextWrapping="Wrap" Text="Maestrias" HorizontalAlignment="Center" Foreground="White" FontSize="22"/>
 
             <StackPanel x:Name="InfoMaestrias" Height="160" Width="320">
-                
+                <!--<StackPanel Orientation="Horizontal">-->
+                    <!--<Image Source="http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/Aatrox.png" Height="50" Width="50"/>-->
+                    <!--<Image Source="http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/Volibear.png" Height="50" Width="50" Margin="5,0,0,0"/>-->
+                    <!--<TextBlock Text="Takato 547474" Foreground="White" FontSize="20" Height="30" Margin="20,0,0,0"/>-->
+                <!--</StackPanel>-->
             </StackPanel>
         </StackPanel>
 
