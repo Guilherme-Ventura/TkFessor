@@ -114,8 +114,35 @@ namespace TkFessor
                     var participante = Array.Find(partidas.info.participants, item => item.summonerName == dadosInvocador.name);
                     var fila = infoFila(partidas.info.queueId);
 
+                    switch (participante.individualPosition)
+                    {
+                        case "TOP":
+                            participante.individualPosition = "Top";
+                            break;
+
+                        case "JUNGLE":
+                            participante.individualPosition = "Selva";
+                            break;
+
+                        case "MIDDLE":
+                            participante.individualPosition = "Meio";
+                            break;
+
+                        case "BOTTOM":
+                            participante.individualPosition = "Atirador";
+                            break;
+
+                        case "UTILITY":
+                            participante.individualPosition = "Suporte";
+                            break;
+
+                        default:
+                            participante.individualPosition = "-----";
+                            break;
+                    }
+
                     string resultadoPartida = participante.win ? "Vitória" : "Derrota";
-                    CriarLinhasHistorico("Lane: " + participante.lane + "\t " + participante.kills + "/" + participante.deaths + "/" + participante.assists  + "\t" + fila.map + "\nDuração: " + partidas.info.gameDuration + "\t " + resultadoPartida + "\t" + fila.description.Replace(" games", ""), infoCampeao(participante.championId.ToString()));
+                    CriarLinhasHistorico("Lane: " + participante.individualPosition + "\t " + participante.kills + "/" + participante.deaths + "/" + participante.assists + "\t\t " + fila.map + "\nDuração: " + partidas.info.gameDuration + "\t " + resultadoPartida + "\t\t" + fila.description.Replace("games", "").Replace("5v5", ""), infoCampeao(participante.championId.ToString()));
                 }
             }
             catch
@@ -194,6 +221,7 @@ namespace TkFessor
             painelInfoHistorico.Orientation = Orientation.Horizontal;
             painelInfoHistorico.Width = 520;
             painelInfoHistorico.Height = 70;
+
 
             Image imageCamp = new Image();
             imageCamp.Source = new ImageSourceConverter().ConvertFromString("http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/" + campeao.image.full) as ImageSource;
