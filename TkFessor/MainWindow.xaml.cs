@@ -41,7 +41,8 @@ namespace TkFessor
         public void AlterarSolo(string nickname)
         {
             InfoMaestrias.Children.Clear();
-            InfoHistorico.Children.Clear();
+            PainelHistorico.Children.Clear();
+            
 
             ColetarDados executa = new ColetarDados();
             DadosInvocador dadosInvocador = executa.BuscarRequicicao(nickname);
@@ -68,13 +69,13 @@ namespace TkFessor
             Invocador.Text = dadosInvocador.name;
             Lvl.Text = "Lvl: " + dadosInvocador.summonerLevel;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
                 string id = maestriaInvocador[i].championId;
                 Campeao campeao = infoCampeao(id);
                 CampImage = campeao.image.full;
 
-                CriarLinhasMaestria(campeao.name + " " + maestriaInvocador[i].championPoints, maestriaInvocador[i].championLevel);
+                CriarLinhasMaestria(campeao.name + " Pontos: " + maestriaInvocador[i].championPoints, maestriaInvocador[i].championLevel);
             }
 
             foreach (var fila in infoFilas)
@@ -107,14 +108,14 @@ namespace TkFessor
 
             try
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 6; i++)
                 {
                     DadosHistorico partidas = executa.BuscarInfoPartida(chaves[i]);
                     var participante = Array.Find(partidas.info.participants, item => item.summonerName == dadosInvocador.name);
+                    var fila = infoFila(partidas.info.queueId);
 
                     string resultadoPartida = participante.win ? "Vitória" : "Derrota";
-
-                    CriarLinhasHistorico(participante.championName + " " + participante.lane + " " + partidas.info.gameDuration + " " + resultadoPartida);
+                    CriarLinhasHistorico("Lane: " + participante.lane + "\t " + participante.kills + "/" + participante.deaths + "/" + participante.assists  + "\t" + fila.map + "\nDuração: " + partidas.info.gameDuration + "\t " + resultadoPartida + "\t" + fila.description.Replace(" games", ""), infoCampeao(participante.championId.ToString()));
                 }
             }
             catch
@@ -177,17 +178,42 @@ namespace TkFessor
                 BarraPesquisa.Text = String.Empty;
             }
         }
-        private void CriarLinhasHistorico(string dados)
-        {
-            TextBlock historico = new TextBlock();
 
+        public DadosTipoFila infoFila(int filaId)
+        {
+            var file = @"Entidades\DadosTipoFilaJson.json";
+            var saida = JsonConvert.DeserializeObject<List<DadosTipoFila>>(File.ReadAllText(file, Encoding.UTF8));
+            var tipoFila = saida.Find(i => i.queueId == filaId);
+
+            return tipoFila;
+        }
+                
+        public void CriarLinhasHistorico(string dados, Campeao campeao = null)
+        {
+            StackPanel painelInfoHistorico = new StackPanel();
+            painelInfoHistorico.Orientation = Orientation.Horizontal;
+            painelInfoHistorico.Width = 520;
+            painelInfoHistorico.Height = 70;
+
+            Image imageCamp = new Image();
+            imageCamp.Source = new ImageSourceConverter().ConvertFromString("http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/" + campeao.image.full) as ImageSource;
+            imageCamp.Height = 45;
+            imageCamp.Width = 45;
+            imageCamp.Margin = new Thickness(20, 0, 0, 0);
+            imageCamp.HorizontalAlignment = HorizontalAlignment.Left;
+            
+
+            TextBlock historico = new TextBlock();
             historico.Text = dados;
             historico.Foreground = Brushes.White;
             historico.FontSize = 16;
             historico.HorizontalAlignment = HorizontalAlignment.Center;
-            historico.Margin = new Thickness(10);
-
-            InfoHistorico.Children.Add(historico);
+            historico.Margin = new Thickness(10, 10, 0, 0);
+           
+            painelInfoHistorico.Children.Add(imageCamp);
+            painelInfoHistorico.Children.Add(historico);
+            PainelHistorico.Children.Add(painelInfoHistorico);
+           
         }
         private void CriarLinhasMaestria(string TextInfoCamp, string CampLvlMaestria)
         {
@@ -197,14 +223,14 @@ namespace TkFessor
 
             Image imageChampMaestria = new Image();
             imageChampMaestria.Source = new ImageSourceConverter().ConvertFromString("http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/" + CampImage) as ImageSource;
-            imageChampMaestria.Height = 50;
-            imageChampMaestria.Width = 50;
+            imageChampMaestria.Height = 45;
+            imageChampMaestria.Width = 45;
 
             Image imageIconeMaestria = new Image();
-            imageIconeMaestria.Source = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Maestria\\" + CampLvlMaestria + ".webp") as ImageSource;
+            imageIconeMaestria.Source = new ImageSourceConverter().ConvertFromString("Dados\\Imagens\\Maestria\\" + CampLvlMaestria + ".png") as ImageSource;
 
-            imageIconeMaestria.Height = 50;
-            imageIconeMaestria.Width = 50;
+            imageIconeMaestria.Height = 45;
+            imageIconeMaestria.Width = 45;
             imageIconeMaestria.Margin = new Thickness(10,0,0,0);
 
             TextBlock maestria = new TextBlock();
