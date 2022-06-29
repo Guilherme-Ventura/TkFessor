@@ -29,7 +29,7 @@ namespace TkFessor
         {
             Random ImagemAleatoria = new Random();
             string[] listadefotos = new string[5];
-            listadefotos[0] = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Volibear_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
+            listadefotos[0] = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
             listadefotos[1] = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Garen_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
             listadefotos[2] = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Gragas_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
             listadefotos[3] = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Tristana_" + ImagemAleatoria.Next(3).ToString() + ".jpg";
