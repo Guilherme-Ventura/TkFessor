@@ -616,56 +616,6 @@
     },
     {
       "version": "12.6.1",
-      "id": "Belveth",
-      "key": "200",
-      "name": "Bel'Veth",
-      "title": "a Imperatriz do Vazio",
-      "blurb": "Bel'Veth, uma imperatriz tenebrosa nascida da essência de uma cidade devorada, é o fim da própria Runeterra... E o início de uma realidade monstruosa criada à sua imagem. Guiada por eras de história, conhecimento e lembranças adaptadas do mundo superior...",
-      "info": {
-        "attack": 4,
-        "defense": 2,
-        "magic": 7,
-        "difficulty": 10
-      },
-      "image": {
-        "full": "Belveth.png",
-        "sprite": "champion0.png",
-        "group": "champion",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "tags": [
-        "Fighter"
-      ],
-      "partype": "",
-      "stats": {
-        "hp": 610,
-        "hpperlevel": 105,
-        "mp": 6,
-        "mpperlevel": 0,
-        "movespeed": 340,
-        "armor": 32,
-        "armorperlevel": 4.7,
-        "spellblock": 32,
-        "spellblockperlevel": 2.05,
-        "attackrange": 175,
-        "hpregen": 6,
-        "hpregenperlevel": 0.6,
-        "mpregen": 0,
-        "mpregenperlevel": 0,
-        "crit": 0,
-        "critperlevel": 0,
-        "attackdamage": 60,
-        "attackdamageperlevel": 2,
-        "attackspeedperlevel": 0,
-        "attackspeed": 0.85
-      }
-    },
-
-    {
-      "version": "12.6.1",
       "id": "Blitzcrank",
       "key": "53",
       "name": "Blitzcrank",
